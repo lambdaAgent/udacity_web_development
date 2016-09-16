@@ -23,13 +23,13 @@ def flush():
 def gets(key):
 	v = CACHE.get(key)
 	if v:
-		return v, hash(repr(val))
+		return v, hash(repr(v))
 
 def cas(key, value, cas_unique):
 	r = gets(key)
 	if r:
 		val, unique = r
-		if unique == cas_unique
+		if unique == cas_unique:
 			return set(key, value)
 		else:
-			return False
+			return False 
