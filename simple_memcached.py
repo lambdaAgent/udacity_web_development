@@ -19,3 +19,17 @@ def delete(key):
 
 def flush():
 	CACHE.clear();
+
+def gets(key):
+	v = CACHE.get(key)
+	if v:
+		return v, hash(repr(val))
+
+def cas(key, value, cas_unique):
+	r = gets(key)
+	if r:
+		val, unique = r
+		if unique == cas_unique
+			return set(key, value)
+		else:
+			return False
